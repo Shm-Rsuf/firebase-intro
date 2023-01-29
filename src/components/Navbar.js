@@ -24,10 +24,10 @@ const Navbar = ({ user }) => {
         </li>
         <li>
           <Link
-            to={`/${user.email ? "profile" : "login"}`}
+            to={`/${user?.email ? "profile" : "login"}`}
             className="hover:text-orange-500 duration-300"
           >
-            {user.email ? `Welcome, ${user.displayName}` : "Login"}
+            {user?.email ? `Welcome, ${user.displayName}` : "Login"}
           </Link>
         </li>
       </ul>
