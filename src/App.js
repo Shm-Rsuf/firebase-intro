@@ -11,6 +11,8 @@ import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import NotFound from "./components/NotFound";
+import RequireAuth from "./components/RequireAuth";
+import RequireAuth2 from "./components/RequireAuth2";
 
 const auth = getAuth(app);
 
@@ -22,7 +24,7 @@ const App = () => {
       if (data) {
         setUser(data);
       } else {
-        console.log("No data");
+        // console.log("No data");
       }
     });
   }, []);
@@ -35,10 +37,28 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route
           path="/profile"
-          element={<Profile user={user} setUser={setUser} />}
+          element={
+            <RequireAuth user={user}>
+              <Profile user={user} setUser={setUser} />
+            </RequireAuth>
+          }
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/login"
+          element={
+            <RequireAuth2 user={user}>
+              <Login />
+            </RequireAuth2>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RequireAuth2 user={user}>
+              <Register />
+            </RequireAuth2>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
