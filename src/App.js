@@ -46,17 +46,17 @@ const App = () => {
         <Route
           path="/login"
           element={
-            <RequireAuth2 user={user}>
-              <Login />
-            </RequireAuth2>
+            // <RequireAuth2 user={user}>
+            <Login />
+            // </RequireAuth2>
           }
         />
         <Route
           path="/register"
           element={
-            <RequireAuth2 user={user}>
-              <Register />
-            </RequireAuth2>
+            // <RequireAuth2 user={user}>
+            <Register setUser={setUser} user={user} />
+            // </RequireAuth2>
           }
         />
         <Route path="*" element={<NotFound />} />
